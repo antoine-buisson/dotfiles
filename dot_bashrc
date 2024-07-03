@@ -1,0 +1,24 @@
+
+# unlimited history
+HISTSIZE=-1
+
+source /etc/bash_completion
+
+source <(kubectl completion bash)
+source <(helm completion bash)
+
+alias k=kubectl
+
+complete -o default -F __start_kubectl k
+
+# alias some common commands
+alias kge='watch -d -n 1 "kubectl get events --sort-by=.lastTimestamp | tail -n 35"'
+alias kg='watch -d -n 1 kubectl get'
+alias kga='watch -d -n 1 kubectl get all'
+alias kgp='watch -d -n 1 kubectl get pods'
+alias ktn='watch -d -n 5 "kubectl top nodes; kubectl top pods -A --sort-by=memory --sum"'
+alias ktp='watch -d -n 5 "kubectl top nodes; kubectl top pods --sort-by=memory --sum"'
+alias kgall='kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --ignore-not-found --show-kind'
+
+# krew path
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
