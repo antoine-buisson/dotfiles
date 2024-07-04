@@ -130,9 +130,9 @@ alias kgall='kubectl api-resources --verbs=list --namespaced -o name | xargs -n 
 
 # Teleport
 alias tcl='tsh login --proxy=test-nca.re-factory-solutions.com:443 --auth=local platform --user=abuisson'
-alias tkl='tsh kube login '
+alias tkl='tsh kube login hub; tsh kube login ptf_dev; tsh kube login ptf_rec; tsh kube login sol_dev; tsh kube login sol_rec'
 alias tps='tsh proxy kube -p 8443'
-alias tpc='export KUBECONFIG=/home/abuisson/.tsh/keys/test-nca.re-factory-solutions.com/abuisson-kube/platform/localproxy-8443-kubeconfig; echo "Loaded Teleport Proxy Kube Config"'
+alias tpc='export KUBECONFIG=/home/abuisson/.tsh/keys/test-nca.re-factory-solutions.com/abuisson-kube/platform/localproxy-8443-kubeconfig; echo "Loaded Teleport Proxy Kube Config"; ktx; k9s -c pulses'
 
 # Autocompletion
 source <(kubectl completion bash)
