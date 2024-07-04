@@ -116,13 +116,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Autocompletion
-source <(kubectl completion bash)
-source <(helm completion bash)
-
-# Set up fzf key bindings and fuzzy completion
-eval "$(fzf --bash)"
-
 # Kubernetes
 alias k=kubectl
 complete -o default -F __start_kubectl k
@@ -137,4 +130,9 @@ alias ktp='watch -d -n 5 "kubectl top nodes; kubectl top pods --sort-by=memory -
 alias kgall='kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --ignore-not-found --show-kind'
 
 
+# Autocompletion
+source <(kubectl completion bash)
+source <(helm completion bash)
+
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+eval "$(fzf --bash)"
