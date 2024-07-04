@@ -34,8 +34,8 @@ sudo curl https://goteleport.com/static/install.sh | bash -s ${TELEPORT_VERSION}
 brew install fzf
 
 # Install kns x ktx
-curl https://raw.githubusercontent.com/blendle/kns/master/bin/kns -o /usr/local/bin/kns && chmod +x $_
-curl https://raw.githubusercontent.com/blendle/kns/master/bin/ktx -o /usr/local/bin/ktx && chmod +x $_
+sudo curl https://raw.githubusercontent.com/blendle/kns/master/bin/kns -o /usr/local/bin/kns && sudo chmod +x $_
+sudo curl https://raw.githubusercontent.com/blendle/kns/master/bin/ktx -o /usr/local/bin/ktx && sudo chmod +x $_
 
 # Verify installations
 kubectl version --client
