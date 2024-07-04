@@ -120,7 +120,6 @@ fi
 alias k=kubectl
 complete -o default -F __start_kubectl k
 
-# alias some common commands
 alias kge='watch -d -n 1 "kubectl get events --sort-by=.lastTimestamp | tail -n 35"'
 alias kg='watch -d -n 1 kubectl get'
 alias kga='watch -d -n 1 kubectl get all'
@@ -129,6 +128,11 @@ alias ktn='watch -d -n 5 "kubectl top nodes; kubectl top pods -A --sort-by=memor
 alias ktp='watch -d -n 5 "kubectl top nodes; kubectl top pods --sort-by=memory --sum"'
 alias kgall='kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --ignore-not-found --show-kind'
 
+# Teleport
+alias tcl='tsh login --proxy=test-nca.re-factory-solutions.com:443 --auth=local platform --user=abuisson'
+alias tkl='tsh kube login '
+alias tps='tsh proxy kube -p 8443'
+alias tpc='export KUBECONFIG=/home/abuisson/.tsh/keys/test-nca.re-factory-solutions.com/abuisson-kube/platform/localproxy-8443-kubeconfig; echo "Loaded Teleport Proxy Kube Config"'
 
 # Autocompletion
 source <(kubectl completion bash)
